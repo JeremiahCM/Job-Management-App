@@ -3,9 +3,9 @@ import '../styles/NoteForm.css';
 
 const NoteForm = (props) => {
   return (
-    <div>
+    <div className="note-form-container">
       <form id="note-form" onSubmit={props.addNote}>
-        <h2>Create New Note</h2>
+        <h3>Create New Note</h3>
         <div className="content">
           <div>Content</div>
           <textarea name="content" placeholder="Enter note here..." onChange={props.handleContentChange} form="note-form"></textarea>

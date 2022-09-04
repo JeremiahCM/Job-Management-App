@@ -1,37 +1,45 @@
 import { useState } from 'react'
 import '../styles/JobForm.css';
+import Button from '@mui/material/Button';
+import Divider from '@mui/material/Divider';
 
 const JobForm = (props) => {
   return (
-    <div>
+    <div className="job-form-container">
       <form id="job-form" onSubmit={props.addJob}>
-        <h1>Create New Job</h1>
+        <h2>Create New Job</h2>
+        <Divider variant="middle" />
+        <br/>
         <div className="title">
-          Job Title: <input type="text" value={props.jobTitle} onChange={props.handleTitleChange}/>
+          <label>Job Title: </label>
+          <input type="text" value={props.jobTitle} onChange={props.handleTitleChange}/>
         </div>
         <div className="name">
-          Client Name: <input type="text" value={props.clientName} onChange={props.handleNameChange}/>
+          <label>Client Name: </label>
+          <input type="text" value={props.clientName} onChange={props.handleNameChange}/>
         </div>
         <div className="email">
-          Client Email: <input type="email" value={props.clientEmail} onChange={props.handleEmailChange}/>
+          <label>Client Email: </label>
+          <input type="email" value={props.clientEmail} onChange={props.handleEmailChange}/>
         </div>
-        <div className="phoneNum">
-          Client Phone Number: <input type="text" value={props.clientPhoneNum} onChange={props.handlePhoneNumChange}/>
+        <div className="phone-num">
+          <label>Client Phone Number: </label>
+          <input type="text" value={props.clientPhoneNum} onChange={props.handlePhoneNumChange}/>
         </div>
+        <br/>
         <div className="status">
-          <label>
-            Status
-            <select value={props.status} onChange={props.handleStatusChange}>
+          <label>Status:</label>
+          <select id="status-select" value={props.status} onChange={props.handleStatusChange}>
               {Object.keys(props.statuses).map(status =>
                 <option key={status} value={status}>
                   {props.statuses[status]}
                 </option>
               )}
             </select>
-          </label>
         </div>
+        <br/>
         <div>
-          <button type="submit">Add Job</button>
+          <Button id="add-job-button" variant="contained" type="submit">Add Job</Button>
         </div>
       </form>
     </div>

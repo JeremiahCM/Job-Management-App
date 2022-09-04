@@ -2,6 +2,7 @@ import { useState } from 'react'
 import '../styles/Job.css';
 import Note from './Note'
 import NoteForm from './NoteForm'
+import moment from 'moment/moment';
 
 const Job = (props) => {
   const [notes, setNotes] = useState([])
@@ -12,7 +13,7 @@ const Job = (props) => {
     event.preventDefault()
     const noteObject = {
       id: notes.length + 1,
-      creationDate: new Date().toISOString(),
+      creationDate: moment().format('MMMM Do YYYY, h:mm:ss a'),
       content: content,
     }
 
@@ -34,6 +35,9 @@ const Job = (props) => {
 
   return (
     <div className="job-item">
+      <div className="job-summary">
+        <div>Job ID: </div>
+      </div>
       <div className="job-details">
         <div>Job ID: {props.id}</div>
         <div>Job Title: {props.jobTitle}</div>
@@ -52,7 +56,7 @@ const Job = (props) => {
           handleContentChange={handleContentChange}
         />}
       <div className="note-list">
-        <h2>Notes</h2>
+        <h3>Notes</h3>
         <ul>
           {notes.map((note) =>
             <Note

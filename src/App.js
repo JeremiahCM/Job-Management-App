@@ -2,6 +2,9 @@ import { useState } from 'react'
 import './App.css';
 import Job from './components/Job'
 import JobForm from './components/JobForm'
+import Button from '@mui/material/Button';
+import Divider from '@mui/material/Divider';
+import moment from 'moment/moment';
 
 function App() {
   const statuses = {
@@ -25,7 +28,7 @@ function App() {
     const jobObject = {
       id: jobs.length + 1,
       jobTitle: jobTitle,
-      creationDate: new Date().toISOString(),
+      creationDate: moment().format('MMMM Do YYYY, h:mm:ss a'),
       clientName: clientName,
       clientEmail: clientEmail,
       clientPhoneNum: clientPhoneNum,
@@ -63,8 +66,12 @@ function App() {
 
   return (
     <div className="App">
+      <div className="app-title">
+        <h1>Job Management Application</h1>
+      </div>
       <JobForm
         addJob={addJob}
+        jobTitle={jobTitle}
         clientName={clientName}
         clientEmail={clientEmail}
         clientPhoneNum={clientPhoneNum}
@@ -77,20 +84,29 @@ function App() {
         handleStatusChange={handleStatusChange}
       />
       <div className="job-list">
-        <h1>Job List</h1>
-        {jobs.map((job) =>
-          <Job
-            key={job.id}
-            id={job.id}
-            jobTitle={job.jobTitle}
-            creationDate={job.creationDate}
-            clientName={job.clientName}
-            clientEmail={job.clientEmail}
-            clientPhoneNum={job.clientPhoneNum}
-            status={job.status}
-            statuses={statuses}
-          />
-        )}
+        <h2>Job List</h2>
+        <Divider variant="middle" />
+        <br/>
+        <table>
+          <tr>
+            <th>ID</th>
+            <th>Job Title</th>
+            <th>Client Name</th>
+            <th>Creation Date</th>
+            <th>Status</th>
+            <th id="view-buttons"></th>
+          </tr>
+          {jobs.map((job) =>
+            <tr key={job.id}>
+              <td>{job.id}</td>
+              <td>{job.jobTitle}</td>
+              <td>{job.clientName}</td>
+              <td>{job.creationDate}</td>
+              <td>{job.status}</td>
+              <td><button>View</button></td>
+            </tr>
+          )}
+        </table>
       </div>
     </div>
   );
