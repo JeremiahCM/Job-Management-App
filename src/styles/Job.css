@@ -14,7 +14,7 @@ ul, li {
     float: right;
 }
 
-#edit-notes-button, #finish-editing-button, #new-note-button {
+#edit-notes-button, #edit-status-button, #finish-edit-notes-button, #finish-edit-status-button, #new-note-button {
     width: 30%;
     font-size: 12px;
     margin: 0px 10px;

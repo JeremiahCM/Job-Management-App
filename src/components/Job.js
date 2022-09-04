@@ -5,16 +5,18 @@ import NoteForm from './NoteForm'
 import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
 import moment from 'moment/moment';
-import { ClassNames } from '@emotion/react';
 
 const Job = (props) => {
   const [notes, setNotes] = useState(props.notes)
   const [showAddNote, setShowAddNote] = useState(false)
-  const [editNotes, setEditNotes] = useState(false)
   const [content, setContent] = useState('')
+  const [editStatus, setEditStatus] = useState(false)
+  const [newStatus, setNewStatus] = useState(props.status)
+  const [editNotes, setEditNotes] = useState(false)
 
   useEffect(() => {
     setNotes(props.notes)
+    setNewStatus(props.status)
   }, [props.notes, setNotes])
 
   const addNote = (event) => {
@@ -39,13 +41,24 @@ const Job = (props) => {
     setShowAddNote(!showAddNote)
   }
 
+  const handleStatusEdit = () => {
+    setEditStatus(!editStatus)
+  }
+
+  const handleNewStatusChange = (event) => {
+    setNewStatus(event.target.value)
+  }
+
+  const handleStatusUpdate = () => {
+
+  }
+
   const handleEditNotesChange = () => {
     setEditNotes(!editNotes)
     console.log(editNotes)
   }
 
   const handleNoteEdits = () => {
-
   }
 
   return (
@@ -84,10 +97,31 @@ const Job = (props) => {
             </tr>
             <tr>
               <td>Status: </td>
-              <td>{props.statuses[props.status]}</td>
+              <td>
+                {!editStatus && 
+                  props.statuses[props.status]
+                }
+
+                {editStatus &&
+                  <div className="edit-status-cotainer">
+                    <form id="edit-status" onSubmit={handleStatusUpdate}>
+                      <select id="status-select" value={newStatus} onChange={handleNewStatusChange}>
+                          {Object.keys(props.statuses).map(status =>
+                            <option key={status} value={status}>
+                              {props.statuses[status]}
+                            </option>
+                          )}
+                      </select>
+                    </form>
+                  </div>
+                }
+              </td>
             </tr>
           </tbody>
         </table>
+
+        {!editStatus && <Button id="edit-status-button" variant="contained" onClick={handleStatusEdit}>Edit Status</Button>}
+        {editStatus && <Button id="finish-edit-status-button" variant="contained" onClick={handleNewStatusChange} type="submit" form="edit-status">Finish Editing</Button>}
       </div>
       <br/>
 
@@ -120,7 +154,7 @@ const Job = (props) => {
       <div>
         {!showAddNote && <Button id="new-note-button" variant="contained" onClick={handleShowAddNoteChange}>Create New Note</Button>}
         {!editNotes && <Button id="edit-notes-button" variant="contained" onClick={handleEditNotesChange}>Edit Notes</Button>}
-        {editNotes && <Button id="finish-editing-button" variant="contained" onClick={handleEditNotesChange} form="edit-notes">Finish Editing</Button>}
+        {editNotes && <Button id="finish-edit-notes-button" variant="contained" onClick={handleEditNotesChange} type="submit" form="edit-notes">Finish Editing</Button>}
       </div>
 
       {showAddNote && <NoteForm
