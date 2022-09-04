@@ -1,6 +1,47 @@
-# Getting Started with Create React App
+# Frontend Job Management Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a job management application bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+This app allows tradies to create jobs to manage, take notes on these jobs and keep records through updating these jobs.
+
+This web app uses
+* ReactJS
+* Axios
+* MaterialUI (Styling library)
+* MomentJS (Date formatting library)
+* JSON Server
+
+This web app has been created with __Google Chrome__ in mind as the default browser.
+
+## How to set up the web app
+
+1. Copy the repository to a suitable directory on your computer
+2. Open up the app folder with VSCode
+3. Set up a split terminal in VSCode (one will JSON-server, other will run the web app)
+4. In one terminal, run __'npx json-server --port 3001 --watch db.json '__
+* You should see that the db.json is done loading and the local API endpoints have been established
+* Leave this terminal with the JSON Server running
+5. In the other terminal, run __'npm install'__ to download all the modules and dependencies required
+6. In this same terminal, run __'npm start'__ to start up the web app
+* You should soon see the main page open up in your default browser
+7. Explore the web app!
+
+## Completed Features
+
+* Job/Note Lists
+* Create new unique jobs with details
+* Jobs have a status field for progress
+* Create new notes attached to jobs
+* View job/note details
+
+
+## To be completed
+
+* Filter and sort jobs
+* Edit existing notes attached to jobs
+* Edit status of existing job
+
+
 
 ## Available Scripts
 
