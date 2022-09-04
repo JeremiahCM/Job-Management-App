@@ -33,7 +33,8 @@ function App() {
       clientName: clientName,
       clientEmail: clientEmail,
       clientPhoneNum: clientPhoneNum,
-      status: clientStatus
+      status: clientStatus,
+      notes: [{id: 1, creationDate: 'Sept', content: 'Here'}]
     }
 
     setJobs(jobs.concat(jobObject))
@@ -42,7 +43,13 @@ function App() {
     setClientEmail('')
     setClientPhoneNum('')
     setClientStatus(statuses.Scheduled)
-    console.log(jobs)
+  }
+
+  const handleJobNoteAdd = (note) => {
+    let index = jobs.findIndex(index => index.id === viewingTask.id)
+    let updatedJobs = [...jobs]
+    updatedJobs[index].notes.push(note)
+    setJobs(updatedJobs)
   }
 
   const handleTitleChange = (event) => {
@@ -67,7 +74,6 @@ function App() {
 
   const handleShowViewingTaskChange = (value) => {
     setViewingTask(value)
-    console.log(viewingTask)
   }
 
   return (
@@ -102,6 +108,9 @@ function App() {
             clientPhoneNum={viewingTask.clientPhoneNum}
             status={viewingTask.status}
             statuses={statuses}
+            notes={viewingTask.notes}
+            handleJobNoteAdd={handleJobNoteAdd}
+            handleShowViewingTaskChange={handleShowViewingTaskChange}
           />
         </div>
       }

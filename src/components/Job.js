@@ -1,15 +1,20 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import '../styles/Job.css';
 import Note from './Note'
 import NoteForm from './NoteForm'
 import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
 import moment from 'moment/moment';
+import { ClassNames } from '@emotion/react';
 
 const Job = (props) => {
-  const [notes, setNotes] = useState([])
+  const [notes, setNotes] = useState(props.notes)
   const [showAddNote, setShowAddNote] = useState(false)
   const [content, setContent] = useState('')
+
+  useEffect(() => {
+    setNotes(props.notes)
+  }, [props.notes, setNotes])
 
   const addNote = (event) => {
     event.preventDefault()
@@ -22,21 +27,20 @@ const Job = (props) => {
     setNotes(notes.concat(noteObject))
     setContent('')
     handleShowAddNoteChange()
-    console.log(noteObject)
+    props.handleJobNoteAdd(noteObject)
   }
 
   const handleContentChange = (event) => {
     setContent(event.target.value)
-    console.log(event.target.value)
   }
 
   const handleShowAddNoteChange = () => {
     setShowAddNote(!showAddNote)
-    console.log(showAddNote)
   }
 
   return (
     <div className="job-item">
+      <Button id="exit-job-button" variant="contained" onClick={() => props.handleShowViewingTaskChange('')}>Exit</Button>
       <div className="job-details">
         <h2>Job Title: {props.jobTitle}</h2>
         <Divider variant="middle"/>
