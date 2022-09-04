@@ -10,6 +10,7 @@ import { ClassNames } from '@emotion/react';
 const Job = (props) => {
   const [notes, setNotes] = useState(props.notes)
   const [showAddNote, setShowAddNote] = useState(false)
+  const [editNotes, setEditNotes] = useState(false)
   const [content, setContent] = useState('')
 
   useEffect(() => {
@@ -36,6 +37,15 @@ const Job = (props) => {
 
   const handleShowAddNoteChange = () => {
     setShowAddNote(!showAddNote)
+  }
+
+  const handleEditNotesChange = () => {
+    setEditNotes(!editNotes)
+    console.log(editNotes)
+  }
+
+  const handleNoteEdits = () => {
+
   }
 
   return (
@@ -84,7 +94,7 @@ const Job = (props) => {
       <div className="note-list">
         <h3>Notes</h3>
         <ul>
-          {notes.map((note) =>
+          {!editNotes && notes.map((note) =>
             <Note
               key={note.id}
               id={note.id}
@@ -92,16 +102,32 @@ const Job = (props) => {
               content={note.content}
             />
           )}
+
+          <div className="edit-notes-container">
+            <form id="edit-notes" onSubmit={handleNoteEdits}>
+              {editNotes && notes.map((note) =>
+                <div key={note.id}>
+                  <div>Note {note.id}</div>
+                  <textarea rows="4" id={note.id} name="content" value={note.content} form="edit-notes"></textarea>
+                </div>
+              )}
+            </form>
+          </div>
         </ul>
       </div>
+      <br />
 
-      {!showAddNote && <Button id="new-note-button" variant="contained" onClick={handleShowAddNoteChange}>Create New Note</Button>}
+      <div>
+        {!showAddNote && <Button id="new-note-button" variant="contained" onClick={handleShowAddNoteChange}>Create New Note</Button>}
+        {!editNotes && <Button id="edit-notes-button" variant="contained" onClick={handleEditNotesChange}>Edit Notes</Button>}
+        {editNotes && <Button id="finish-editing-button" variant="contained" onClick={handleEditNotesChange} form="edit-notes">Finish Editing</Button>}
+      </div>
 
       {showAddNote && <NoteForm
-          addNote={addNote}
-          content={content}
-          handleContentChange={handleContentChange}
-        />}
+        addNote={addNote}
+        content={content}
+        handleContentChange={handleContentChange}
+      />}
     </div>
   )
 }

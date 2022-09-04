@@ -9,7 +9,7 @@ const NoteForm = (props) => {
       <form id="note-form" onSubmit={props.addNote}>
         <h3>Create New Note</h3>
         <div className="content">
-          <textarea rows="10" id="content" name="content" placeholder="Enter note here..." onChange={props.handleContentChange} form="note-form"></textarea>
+          <textarea rows="10" name="content" placeholder="Enter note here..." onChange={props.handleContentChange} form="note-form"></textarea>
         </div>
         <div>
           <Button id="add-note-button" variant="contained" type="submit">Add Note</Button>

@@ -52,6 +52,12 @@ function App() {
     setJobs(updatedJobs)
   }
 
+  const handleJobNoteEdit = (note) => {
+    let index = jobs.findIndex(index => index.id === viewingTask.id)
+    let updatedJobs = [...jobs]
+    updatedJobs[index].notes[viewingTask.id] = note
+  }
+
   const handleTitleChange = (event) => {
     setJobTitle(event.target.value)
   }
