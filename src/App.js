@@ -3,7 +3,6 @@ import axios from 'axios'
 import './App.css';
 import Job from './components/Job'
 import JobForm from './components/JobForm'
-import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
 import moment from 'moment/moment';
 
@@ -16,16 +15,6 @@ function App() {
     Completed: "Completed"
   }
 
-  /*useEffect(() => {
-    axios
-      .get('http://localhost:3001/jobs')
-      .then(response => {
-        setJobs(response.data)
-      })
-    console.log(jobs)
-  }, [])
-  console.log('render', jobs.length, 'jobs')*/
-
   const [jobs, setJobs] = useState([])
   const [jobTitle, setJobTitle] = useState('')
   const [clientName, setClientName] = useState('')
@@ -34,6 +23,15 @@ function App() {
   const [clientStatus, setClientStatus] = useState(statuses.Scheduled)
   const [viewingTask, setViewingTask] = useState('')
   const [filter, setFilter] = useState('')
+  
+  useEffect(() => {
+    axios
+      .get('http://localhost:3001/jobs')
+      .then(response => {
+        setJobs(response.data)
+      })
+  }, [])
+  console.log('render', jobs.length, 'jobs')
 
   const addJob = (event) => {
     event.preventDefault()
@@ -45,7 +43,7 @@ function App() {
       clientEmail: clientEmail,
       clientPhoneNum: clientPhoneNum,
       status: clientStatus,
-      notes: [{id: 1, creationDate: 'Sept', content: 'Here'}]
+      notes: []
     }
 
     setJobs(jobs.concat(jobObject))
@@ -54,6 +52,7 @@ function App() {
     setClientEmail('')
     setClientPhoneNum('')
     setClientStatus(statuses.Scheduled)
+    console.log(jobs)
   }
 
   const handleJobNoteAdd = (note) => {
@@ -153,7 +152,7 @@ function App() {
                 <td>{job.jobTitle}</td>
                 <td>{job.clientName}</td>
                 <td>{job.creationDate}</td>
-                <td>{job.status}</td>
+                <td>{statuses[job.status]}</td>
                 <td><button onClick={() => handleShowViewingTaskChange(job)}>View</button></td>
               </tr>
             )}

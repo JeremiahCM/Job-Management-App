@@ -1,3 +1,158 @@
 {
-    
+    "jobs":[
+        {
+            "id": 1,
+            "jobTitle": "Broadband Installation",
+            "creationDate": "September 5th 2022, 12:49:52 am",
+            "clientName": "Jeremiah Martinez",
+            "clientEmail": "itsjeremiahmartinez@gmail.com",
+            "clientPhoneNum": "(55) 555-5555",
+            "status": "Completed",
+            "notes": []
+        },
+        {
+            "id": 2,
+            "jobTitle": "Repair",
+            "creationDate": "September 5th 2022, 12:52:11 am",
+            "clientName": "Clay Hammond",
+            "clientEmail": "clay.hammond@outlook.com",
+            "clientPhoneNum": "021 4044 940",
+            "status": "Completed",
+            "notes": []
+        },
+        {
+            "id": 3,
+            "jobTitle": "Lighting replacement",
+            "creationDate": "September 5th 2022, 12:52:58 am",
+            "clientName": "H&M",
+            "clientEmail": "info.nz@hm.com",
+            "clientPhoneNum": "0800 406 700",
+            "status": "Completed",
+            "notes": []
+        },
+        {
+            "id": 4,
+            "jobTitle": "Welding",
+            "creationDate": "September 5th 2022, 12:55:01 am",
+            "clientName": "University of Auckland",
+            "clientEmail": "city.security@auckland.ac.nz",
+            "clientPhoneNum": "(09) 923 5025",
+            "status": "Active",
+            "notes": []
+        },
+        {
+            "id": 5,
+            "jobTitle": "Heat Pump Installation",
+            "creationDate": "September 5th 2022, 12:56:59 am",
+            "clientName": "Amy-Louise Lovell",
+            "clientEmail": "amyLL@outlook.com",
+            "clientPhoneNum": "022 885 1365",
+            "status": "Completed",
+            "notes": []
+        },
+        {
+            "id": 6,
+            "jobTitle": "Powerline Maintenance",
+            "creationDate": "September 5th 2022, 12:59:29 am",
+            "clientName": "Vector",
+            "clientEmail": "contactus@vector.co.nz",
+            "clientPhoneNum": "0508 832 867",
+            "status": "Active",
+            "notes": []
+        },
+        {
+            "id": 7,
+            "jobTitle": "Living room wiring",
+            "creationDate": "September 5th 2022, 1:00:35 am",
+            "clientName": "Aaron Russo",
+            "clientEmail": "aaronrusso@gmail.com",
+            "clientPhoneNum": "021 125 2235",
+            "status": "Active",
+            "notes": []
+        },
+        {
+            "id": 8,
+            "jobTitle": "Flooring",
+            "creationDate": "September 5th 2022, 1:02:11 am",
+            "clientName": "Kaleb Thompson",
+            "clientEmail": "k_thompson@gmail.com",
+            "clientPhoneNum": "026 147 8706",
+            "status": "Invoicing",
+            "notes": []
+        },
+        {
+            "id": 9,
+            "jobTitle": "Plumbing",
+            "creationDate": "September 5th 2022, 1:04:06 am",
+            "clientName": "Auckland Hospital",
+            "clientEmail": "angelina.sommer@outlook.com",
+            "clientPhoneNum": "022 668 9922",
+            "status": "Invoicing",
+            "notes": [
+                {
+                    "id": 1,
+                    "creationDate": "September 5th 2022, 1:05:21 am",
+                    "content": "Planned start September 10th, 8am"
+                },
+                {
+                    "id": 2,
+                    "creationDate": "September 5th 2022, 1:07:05 am",
+                    "content": "Job finished"
+                }
+            ]
+        },
+        {
+            "id": 10,
+            "jobTitle": "Kitchen maintenance",
+            "creationDate": "September 5th 2022, 1:08:02 am",
+            "clientName": "Yasmine Strickland",
+            "clientEmail": "yas.strickland@hotmail.com",
+            "clientPhoneNum": "021 588 6501",
+            "status": "Scheduled",
+            "notes": [
+                {
+                    "id": 1,
+                    "creationDate": "September 5th 2022, 1:09:03 am",
+                    "content": "Urgent job"
+                },
+                {
+                    "id": 2,
+                    "creationDate": "September 5th 2022, 1:09:17 am",
+                    "content": "Done by next week"
+                }
+            ]
+        },
+        {
+            "id": 11,
+            "jobTitle": "Bathroom Renovation",
+            "creationDate": "September 5th 2022, 1:10:35 am",
+            "clientName": "Sophia Wilkes",
+            "clientEmail": "sophiew@gmail.com",
+            "clientPhoneNum": "026 147 87061",
+            "status": "ToPriced",
+            "notes": [
+                {
+                    "id": 1,
+                    "creationDate":"September 5th 2022, 1:11:53 am",
+                    "content": "Contact about price"
+                }
+            ]
+        },
+        {
+            "id": 12,
+            "jobTitle": "Remodelling",
+            "creationDate": "September 5th 2022, 1:13:11 am",
+            "clientName": "Sal's Pizza",
+            "clientEmail": "yanlifen@sals.co.nz",
+            "clientPhoneNum": "021 555 5152",
+            "status": "Scheduled",
+            "notes": [
+                {
+                    "id": 1,
+                    "creationDate":"September 5th 2022, 1:15:09 am",
+                    "content": "Materials need to be ordered"
+                }
+            ]
+        }
+    ]
 }
