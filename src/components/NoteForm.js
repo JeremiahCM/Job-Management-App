@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import '../styles/NoteForm.css';
+import Button from '@mui/material/Button';
+import Divider from '@mui/material/Divider';
 
 const NoteForm = (props) => {
   return (
@@ -7,11 +9,10 @@ const NoteForm = (props) => {
       <form id="note-form" onSubmit={props.addNote}>
         <h3>Create New Note</h3>
         <div className="content">
-          <div>Content</div>
-          <textarea name="content" placeholder="Enter note here..." onChange={props.handleContentChange} form="note-form"></textarea>
+          <textarea rows="10" id="content" name="content" placeholder="Enter note here..." onChange={props.handleContentChange} form="note-form"></textarea>
         </div>
         <div>
-          <button type="submit">Add Note</button>
+          <Button id="add-note-button" variant="contained" type="submit">Add Note</Button>
         </div>
       </form>
     </div>

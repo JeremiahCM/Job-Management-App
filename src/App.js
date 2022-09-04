@@ -21,6 +21,7 @@ function App() {
   const [clientEmail, setClientEmail] = useState('')
   const [clientPhoneNum, setClientPhoneNum] = useState('')
   const [clientStatus, setClientStatus] = useState(statuses.Scheduled)
+  const [viewingTask, setViewingTask] = useState('')
   const [filter, setFilter] = useState('')
 
   const addJob = (event) => {
@@ -64,6 +65,11 @@ function App() {
     setClientStatus(event.target.value)
   }
 
+  const handleShowViewingTaskChange = (value) => {
+    setViewingTask(value)
+    console.log(viewingTask)
+  }
+
   return (
     <div className="App">
       <div className="app-title">
@@ -83,29 +89,49 @@ function App() {
         handlePhoneNumChange={handlePhoneNumChange}
         handleStatusChange={handleStatusChange}
       />
+
+      {viewingTask != '' &&
+        <div className="viewing-task">
+          <Job
+            key={viewingTask}
+            id={viewingTask.id}
+            jobTitle={viewingTask.jobTitle}
+            creationDate={viewingTask.creationDate}
+            clientName={viewingTask.clientName}
+            clientEmail={viewingTask.clientEmail}
+            clientPhoneNum={viewingTask.clientPhoneNum}
+            status={viewingTask.status}
+            statuses={statuses}
+          />
+        </div>
+      }
+
+
       <div className="job-list">
         <h2>Job List</h2>
         <Divider variant="middle" />
         <br/>
         <table>
-          <tr>
-            <th>ID</th>
-            <th>Job Title</th>
-            <th>Client Name</th>
-            <th>Creation Date</th>
-            <th>Status</th>
-            <th id="view-buttons"></th>
-          </tr>
-          {jobs.map((job) =>
-            <tr key={job.id}>
-              <td>{job.id}</td>
-              <td>{job.jobTitle}</td>
-              <td>{job.clientName}</td>
-              <td>{job.creationDate}</td>
-              <td>{job.status}</td>
-              <td><button>View</button></td>
+          <tbody>
+            <tr>
+              <th>ID</th>
+              <th>Job Title</th>
+              <th>Client Name</th>
+              <th>Creation Date</th>
+              <th>Status</th>
+              <th id="view-buttons"></th>
             </tr>
-          )}
+            {jobs.map((job) =>
+              <tr key={job.id}>
+                <td>{job.id}</td>
+                <td>{job.jobTitle}</td>
+                <td>{job.clientName}</td>
+                <td>{job.creationDate}</td>
+                <td>{job.status}</td>
+                <td><button onClick={() => handleShowViewingTaskChange(job)}>View</button></td>
+              </tr>
+            )}
+          </tbody>
         </table>
       </div>
     </div>

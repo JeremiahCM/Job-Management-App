@@ -1,9 +1,13 @@
 .job-form-container {
-    background-color: white;
+    background-color: rgb(199, 222, 255);
     border-radius: 20px;
     margin: 20px auto;
     padding: 20px;
-    width: 30%;
+    width: 40%;
+  }
+
+input {
+    width: 50%;
 }
 
 label {
@@ -12,15 +16,11 @@ label {
     display: inline-block
 }
 
-input {
-    width: 50%;
+#add-job-button {
+    width: 20%;
+    font-size: 12px;
 }
 
 #status-select {
     width: 100px;
-}
-
-#add-job-button {
-    width: 20%;
-    font-size: 12px;
 }

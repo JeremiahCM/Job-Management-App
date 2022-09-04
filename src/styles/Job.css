@@ -1,6 +1,12 @@
-.job-item {
-    background-color: rgba(47, 130, 207, 0.452);
-    border-radius: 20px;
-    margin: 20px auto;
-    padding: 20px;
+tr {
+    text-align: left;
+}
+
+ul {
+    list-style-type: none;
+}
+
+#new-note-button {
+    width: 30%;
+    font-size: 12px;
 }

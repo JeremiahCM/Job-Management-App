@@ -41,3 +41,11 @@ table {
   padding: 20px;
   width: 40%;
 }
+
+.viewing-task {
+  background-color: rgb(189, 227, 252);
+  border-radius: 20px;
+  margin: 20px auto;
+  padding: 20px;
+  width: 40%;
+}

@@ -2,6 +2,8 @@ import { useState } from 'react'
 import '../styles/Job.css';
 import Note from './Note'
 import NoteForm from './NoteForm'
+import Button from '@mui/material/Button';
+import Divider from '@mui/material/Divider';
 import moment from 'moment/moment';
 
 const Job = (props) => {
@@ -35,26 +37,46 @@ const Job = (props) => {
 
   return (
     <div className="job-item">
-      <div className="job-summary">
-        <div>Job ID: </div>
-      </div>
       <div className="job-details">
-        <div>Job ID: {props.id}</div>
-        <div>Job Title: {props.jobTitle}</div>
-        <div>Creation Date: {props.creationDate}</div>
-        <div>Client Name: {props.clientName}</div>
-        <div>Client Email: {props.clientEmail}</div>
-        <div>Client Phone Number: {props.clientPhoneNum}</div>
-        <div>Status: {props.statuses[props.status]}</div>
+        <h2>Job Title: {props.jobTitle}</h2>
+        <Divider variant="middle"/>
+        <br/>
+
+        <table>
+          <tbody>
+            <tr>
+              <th id="key"></th>
+              <th id="value"></th>
+            </tr>
+            <tr>
+              <td>Job ID: </td>
+              <td>{props.id}</td>
+            </tr>
+            <tr>
+              <td>Creation Date: </td>
+              <td>{props.creationDate}</td>
+            </tr>
+            <tr>
+              <td>Client Name: </td>
+              <td>{props.clientName}</td>
+            </tr>
+            <tr>
+              <td>Client Email: </td>
+              <td>{props.clientEmail}</td>
+            </tr>
+            <tr>
+              <td>Client Phone Number: </td>
+              <td>{props.clientPhoneNum}</td>
+            </tr>
+            <tr>
+              <td>Status: </td>
+              <td>{props.statuses[props.status]}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
+      <br/>
 
-      {!showAddNote && <button onClick={handleShowAddNoteChange}>Create New Note</button>}
-
-      {showAddNote && <NoteForm
-          addNote={addNote}erasdasd
-          content={content}
-          handleContentChange={handleContentChange}
-        />}
       <div className="note-list">
         <h3>Notes</h3>
         <ul>
@@ -68,6 +90,14 @@ const Job = (props) => {
           )}
         </ul>
       </div>
+
+      {!showAddNote && <Button id="new-note-button" variant="contained" onClick={handleShowAddNoteChange}>Create New Note</Button>}
+
+      {showAddNote && <NoteForm
+          addNote={addNote}
+          content={content}
+          handleContentChange={handleContentChange}
+        />}
     </div>
   )
 }
