@@ -1,9 +1,10 @@
-import React from 'react'
+import { useState } from 'react'
 import '../styles/Note.css';
 
 const Note = (props) => {
   return (
-    <div>
+    <div className="note-item">
+      <li>Note {props.id}: {props.content}</li>
     </div>
   )
 }

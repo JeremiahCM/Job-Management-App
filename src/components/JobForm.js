@@ -4,16 +4,19 @@ import '../styles/JobForm.css';
 const JobForm = (props) => {
   return (
     <div>
-      <form onSubmit={props.addJob}>
+      <form id="job-form" onSubmit={props.addJob}>
         <h1>Create New Job</h1>
+        <div className="title">
+          Job Title: <input type="text" value={props.jobTitle} onChange={props.handleTitleChange}/>
+        </div>
         <div className="name">
-          Client Name: <input value={props.clientName} onChange={props.handleNameChange}/>
+          Client Name: <input type="text" value={props.clientName} onChange={props.handleNameChange}/>
         </div>
         <div className="email">
-          Client Email: <input value={props.clientEmail} onChange={props.handleEmailChange}/>
+          Client Email: <input type="email" value={props.clientEmail} onChange={props.handleEmailChange}/>
         </div>
         <div className="phoneNum">
-          Client Phone Number: <input value={props.clientPhoneNum} onChange={props.handlePhoneNumChange}/>
+          Client Phone Number: <input type="text" value={props.clientPhoneNum} onChange={props.handlePhoneNumChange}/>
         </div>
         <div className="status">
           <label>

@@ -13,6 +13,7 @@ function App() {
   }
 
   const [jobs, setJobs] = useState([])
+  const [jobTitle, setJobTitle] = useState('')
   const [clientName, setClientName] = useState('')
   const [clientEmail, setClientEmail] = useState('')
   const [clientPhoneNum, setClientPhoneNum] = useState('')
@@ -23,6 +24,7 @@ function App() {
     event.preventDefault()
     const jobObject = {
       id: jobs.length + 1,
+      jobTitle: jobTitle,
       creationDate: new Date().toISOString(),
       clientName: clientName,
       clientEmail: clientEmail,
@@ -31,11 +33,16 @@ function App() {
     }
 
     setJobs(jobs.concat(jobObject))
+    setJobTitle('')
     setClientName('')
     setClientEmail('')
     setClientPhoneNum('')
     setClientStatus(statuses.Scheduled)
     console.log(jobs)
+  }
+
+  const handleTitleChange = (event) => {
+    setJobTitle(event.target.value)
   }
 
   const handleNameChange = (event) => {
@@ -63,6 +70,7 @@ function App() {
         clientPhoneNum={clientPhoneNum}
         status={clientStatus}
         statuses={statuses}
+        handleTitleChange={handleTitleChange}
         handleNameChange={handleNameChange}
         handleEmailChange={handleEmailChange}
         handlePhoneNumChange={handlePhoneNumChange}
@@ -74,6 +82,7 @@ function App() {
           <Job
             key={job.id}
             id={job.id}
+            jobTitle={job.jobTitle}
             creationDate={job.creationDate}
             clientName={job.clientName}
             clientEmail={job.clientEmail}
