@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import axios from 'axios'
 import './App.css';
 import Job from './components/Job'
 import JobForm from './components/JobForm'
@@ -14,6 +15,16 @@ function App() {
     ToPriced: "To priced",
     Completed: "Completed"
   }
+
+  /*useEffect(() => {
+    axios
+      .get('http://localhost:3001/jobs')
+      .then(response => {
+        setJobs(response.data)
+      })
+    console.log(jobs)
+  }, [])
+  console.log('render', jobs.length, 'jobs')*/
 
   const [jobs, setJobs] = useState([])
   const [jobTitle, setJobTitle] = useState('')
