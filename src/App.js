@@ -1,23 +1,50 @@
-import logo from './logo.svg';
+import { useState } from 'react'
+import { v4 as uuid } from 'uuid';
 import './App.css';
+import Job from './components/Job'
 
 function App() {
+  const emptyJob = {
+    id: null,
+    creationDate: null,
+    clientName: null,
+    clientEmail: null,
+    clientPhone: null,
+  }
+
+  const [jobs, setJobs] = useState([])
+  const [newName, setNewName] = useState('')
+  const [newEmail, setNewEmail] = useState('')
+  const [newPhoneNum, setNewPhoneNum] = useState('')
+  const [filter, setFilter] = useState('')
+  
+  const addJob = (event) => {
+    event.preventDefault()
+    const jobObject = {
+      id: uuid(),
+      creationDate: new Date().toISOString(),
+      clientName: newJob.clientName,
+      clientEmail: newJob.clientEmail,
+      clientPhoneNum: newJob.clientPhoneNum
+    }
+
+    setJobs(jobs.concat(jobObject))
+    setNewName('')
+    setNewEmail('')
+    setNewPhoneNum('')
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <JobForm
+        addJob={addJob}
+        clientName={newName}
+        clientemail={newEmail}
+        clientPhoneNum={newPhoneNum}
+      />
+      <div className="job-list">
+        <h1>Job List</h1>
+      </div>
     </div>
   );
 }
