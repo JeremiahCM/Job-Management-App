@@ -1,49 +1,87 @@
 import { useState } from 'react'
-import { v4 as uuid } from 'uuid';
 import './App.css';
 import Job from './components/Job'
+import JobForm from './components/JobForm'
 
 function App() {
-  const emptyJob = {
-    id: null,
-    creationDate: null,
-    clientName: null,
-    clientEmail: null,
-    clientPhone: null,
+  const statuses = {
+    Scheduled: "Scheduled",
+    Active: "Active",
+    Invoicing: "Invoicing",
+    ToPriced: "To priced",
+    Completed: "Completed"
   }
 
   const [jobs, setJobs] = useState([])
-  const [newName, setNewName] = useState('')
-  const [newEmail, setNewEmail] = useState('')
-  const [newPhoneNum, setNewPhoneNum] = useState('')
+  const [clientName, setClientName] = useState('')
+  const [clientEmail, setClientEmail] = useState('')
+  const [clientPhoneNum, setClientPhoneNum] = useState('')
+  const [clientStatus, setClientStatus] = useState(statuses.Scheduled)
   const [filter, setFilter] = useState('')
-  
+
   const addJob = (event) => {
     event.preventDefault()
     const jobObject = {
-      id: uuid(),
+      id: jobs.length + 1,
       creationDate: new Date().toISOString(),
-      clientName: newJob.clientName,
-      clientEmail: newJob.clientEmail,
-      clientPhoneNum: newJob.clientPhoneNum
+      clientName: clientName,
+      clientEmail: clientEmail,
+      clientPhoneNum: clientPhoneNum,
+      status: clientStatus
     }
 
     setJobs(jobs.concat(jobObject))
-    setNewName('')
-    setNewEmail('')
-    setNewPhoneNum('')
+    setClientName('')
+    setClientEmail('')
+    setClientPhoneNum('')
+    setClientStatus(statuses.Scheduled)
+    console.log(jobs)
+  }
+
+  const handleNameChange = (event) => {
+    setClientName(event.target.value)
+  }
+
+  const handleEmailChange = (event) => {
+    setClientEmail(event.target.value)
+  }
+
+  const handlePhoneNumChange = (event) => {
+    setClientPhoneNum(event.target.value)
+  }
+
+  const handleStatusChange = (event) => {
+    setClientStatus(event.target.value)
   }
 
   return (
     <div className="App">
       <JobForm
         addJob={addJob}
-        clientName={newName}
-        clientemail={newEmail}
-        clientPhoneNum={newPhoneNum}
+        clientName={clientName}
+        clientEmail={clientEmail}
+        clientPhoneNum={clientPhoneNum}
+        status={clientStatus}
+        statuses={statuses}
+        handleNameChange={handleNameChange}
+        handleEmailChange={handleEmailChange}
+        handlePhoneNumChange={handlePhoneNumChange}
+        handleStatusChange={handleStatusChange}
       />
       <div className="job-list">
         <h1>Job List</h1>
+        {jobs.map((job) =>
+          <Job
+            key={job.id}
+            id={job.id}
+            creationDate={job.creationDate}
+            clientName={job.clientName}
+            clientEmail={job.clientEmail}
+            clientPhoneNum={job.clientPhoneNum}
+            status={job.status}
+            statuses={statuses}
+          />
+        )}
       </div>
     </div>
   );

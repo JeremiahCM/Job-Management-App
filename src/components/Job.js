@@ -1,33 +1,39 @@
 import { useState } from 'react'
-import { v4 as uuid } from 'uuid';
-import './Job.css';
+import '../styles/Job.css';
 import Note from './Note'
+import NoteForm from './NoteForm'
 
 const Job = (props) => {
   const [notes, setNotes] = useState([])
-  const [newNote, setNewNote] = useState(
+  const [content, setContent] = useState(
     'new note...'
   )
 
   const addNote = (event) => {
     event.preventDefault()
     const noteObject = {
-      id: uuid(),
-      creationDate: new Date().toISOString(),
-      content: newNote,
+      id: notes.length + 1,
+      creationDate: new Date(),
+      content: content,
     }
 
     setNotes(notes.concat(noteObject))
-    setNewNote('')
+    setContent('')
   }
 
   return (
     <div className="job-item">
-      <div id="job-details">
+      <div className="job-details">
+        <div>ID: {props.id}</div>
+        <div>Creation Date: {props.creationDate}</div>
+        <div>Client Name: {props.clientName}</div>
+        <div>Client Email: {props.clientEmail}</div>
+        <div>Client Phone Number: {props.clientPhoneNum}</div>
+        <div>Status: {props.statuses[props.status]}</div>
       </div>
       <NoteForm
         addJob={addNote}
-        content={newNote}
+        content={content}
       />
       <div className="job-list">
         <h3>Notes</h3>

@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import '../styles/NoteForm.css';
 
 const NoteForm = (props) => {
   return (
@@ -6,3 +7,5 @@ const NoteForm = (props) => {
     </div>
   )
 }
+
+export default NoteForm;
